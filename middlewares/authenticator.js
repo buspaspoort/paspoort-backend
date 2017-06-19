@@ -8,7 +8,7 @@ function firebaseAuthenticator(req, res, next) {
     res.locals.error = false;
 
     if(firebaseIDToken === undefined) {
-        let err = new Error("Firebase ID Token not sent");
+        let err = new Error("No Firebase ID Token header found");
         return next(err);
     } else {
         admin.auth().verifyIdToken(firebaseIDToken)
